@@ -15,7 +15,7 @@ Personal Library Manager is a simple web application built with React and TypeSc
    It is recommended using Node.js 18.X.X or higher to ensure compatibility and optimal performance.
 
 ## Usage
-To start the server and client, run:  
+To start the server and client, run in root:  
   npm start  
   This will start the backend server at default port 3001 and the client application at default port 3000.
 
