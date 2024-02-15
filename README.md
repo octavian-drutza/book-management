@@ -7,9 +7,10 @@ Personal Library Manager is a simple web application built with React and TypeSc
 git clone https://github.com/octavian-drutza/book-management.git
 
 2. Navigate to the project directory and install all dependencies:
-   
    cd book-management
+   
    npm run install-all
+   
    It is recommended using Node.js 18.X.X or higher to ensure compatibility and optimal performance.
 
 ## Usage
