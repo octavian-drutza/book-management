@@ -14,6 +14,7 @@ interface BookModalContextType {
     handleCloseModal: () => void;
     switchToEditingModal: (values: Book) => void;
     generateNotification: (title: string, type: string) => void;
+    handleCloseNotification: () => void,
     NotificationTypes: typeof NotificationTypes;
 }
 
@@ -49,7 +50,8 @@ const BookModalContext = createContext<BookModalContextType>({
     handleOpenModal: () => { },
     handleCloseModal: () => { },
     switchToEditingModal: () => { },
-    generateNotification: () => { }
+    generateNotification: () => { },
+    handleCloseNotification: () => { },
 });
 
 export const useBookModal = () => useContext(BookModalContext);
@@ -81,6 +83,10 @@ export const BookModalProvider: React.FC<BookModalProviderProps> = ({ children }
         setNotification(notifications(title)[type]);
     };
 
+    const handleCloseNotification = () => {
+        setNotification(null);
+    };
+
     return (
         <BookModalContext.Provider value={{
             open,
@@ -91,7 +97,8 @@ export const BookModalProvider: React.FC<BookModalProviderProps> = ({ children }
             initialValues,
             notification,
             generateNotification,
-            NotificationTypes
+            NotificationTypes,
+            handleCloseNotification
         }}>
             {children}
         </BookModalContext.Provider>

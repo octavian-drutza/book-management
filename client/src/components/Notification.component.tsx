@@ -1,32 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Box, Snackbar } from '@mui/material';
 import { useBookModal } from '../BookModalContext';
 
+const vertical = 'top';
+const horizontal = 'center';
+
 const NotificationComponent: React.FC = () => {
-    const [open, setOpen] = useState<boolean>(false);
-    const { notification } = useBookModal();
-
-    const vertical = 'top';
-    const horizontal = 'center';
-
-    useEffect(() => {
-        if (notification) {
-            setOpen(true);
-        }
-    }, [notification]);
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
+    const { notification, handleCloseNotification } = useBookModal();
 
     return (
         <Box sx={{ width: 500 }}>
             <Snackbar
                 anchorOrigin={{ vertical, horizontal }}
-                open={open}
+                open={!!notification}
                 autoHideDuration={5000}
-                onClose={handleClose}
+                onClose={handleCloseNotification}
                 message={notification}
                 key={vertical + horizontal}
             />
@@ -35,3 +23,4 @@ const NotificationComponent: React.FC = () => {
 };
 
 export default NotificationComponent;
+
